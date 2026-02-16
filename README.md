@@ -188,6 +188,7 @@ Key libraries:
 - SciPy: Scientific computing (Virtanen et al., 2020)
 - Qiskit: Quantum computing framework (IBM Quantum)
 ```
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please:
