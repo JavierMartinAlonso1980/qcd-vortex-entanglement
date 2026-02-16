@@ -190,7 +190,12 @@ Key libraries:
 ```
 ## 🤝 Contributing
 
-Contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Contributions are welcome! Please:
+- Open an [Issue](../../issues) for bugs or features
+- Fork and submit a Pull Request for code changes
+- Follow PEP 8 and add tests when applicable
+
+Questions? Contact [jmma@movistar.es] (mailto:jmma@movistar.es)
 
 ## 📄 License
 
