@@ -1,0 +1,28 @@
+# Data Directory Rules
+
+# Ignore all data files (too large for git)
+data/*
+
+# Except these directories and files
+!data/README.md
+!data/.gitkeep
+!data/sample_configs/
+!data/sample_configs/**
+
+# Ignore specific file types everywhere in data/
+data/**/*.root
+data/**/*.h5
+data/**/*.hdf5
+data/**/*.csv
+data/**/*.npy
+data/**/*.npz
+data/**/*.pickle
+data/**/*.pkl
+data/**/*.tar.gz
+data/**/*.zip
+
+# But keep .gitkeep files
+!data/**/.gitkeep
+
+# Keep README files
+!data/**/README.md
