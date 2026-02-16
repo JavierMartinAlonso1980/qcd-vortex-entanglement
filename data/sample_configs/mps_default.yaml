@@ -1,0 +1,40 @@
+# MPS Default Configuration
+# QCD Vortex Entanglement Analysis
+
+# Matrix Product State Parameters
+mps:
+  bond_dimension: 64        # Maximum bond dimension
+  cutoff: 1.0e-10          # Truncation cutoff
+  max_sweeps: 10           # Maximum DMRG sweeps
+  tolerance: 1.0e-8        # Convergence tolerance
+  normalize: true          # Normalize states
+
+# Vortex Parameters
+vortex:
+  lattice_size: [32, 32, 32]  # Lattice dimensions [Lx, Ly, Lz]
+  boundary_conditions: 'periodic'  # 'periodic' or 'open'
+  gauge_group: 'SU3'       # Gauge group
+  beta: 6.0                # Coupling parameter
+
+# Entanglement Measures
+entanglement:
+  measures:
+    - von_neumann           # Von Neumann entropy
+    - renyi_2               # Renyi-2 entropy
+    - mutual_information    # Mutual information
+  bipartition: 'half'      # How to split system
+  subsystems: null         # Custom subsystems (optional)
+
+# Simulation Settings
+simulation:
+  n_samples: 100           # Number of samples
+  seed: 42                 # Random seed (null for random)
+  save_states: false       # Save intermediate states
+  verbose: true            # Print progress
+
+# Output Settings
+output:
+  directory: 'data/processed'
+  prefix: 'vortex'
+  format: 'hdf5'           # 'hdf5', 'npz', or 'csv'
+  save_configs: true       # Save this config with results
