@@ -1,0 +1,35 @@
+# Belle II Analysis Configuration
+
+# Data Input
+input:
+  data_path: 'data/belle2/'
+  file_pattern: '*.root'
+  tree_name: 'events'
+
+# Event Selection
+selection:
+  min_tracks: 4              # Minimum number of tracks
+  max_tracks: 20             # Maximum number of tracks
+  momentum_cut: 0.1          # GeV/c
+  vertex_quality: 0.5        # Vertex fit quality cut
+
+# Feature Extraction
+features:
+  - track_momentum
+  - track_angle
+  - vertex_position
+  - particle_id
+  - energy_deposits
+
+# Classification
+classification:
+  method: 'xgboost'          # 'xgboost', 'random_forest', or 'neural_net'
+  n_estimators: 100          # Number of trees/estimators
+  max_depth: 6               # Maximum tree depth
+  learning_rate: 0.1         # Learning rate
+
+# Output
+output:
+  save_predictions: true
+  save_probabilities: true
+  output_format: 'hdf5'
