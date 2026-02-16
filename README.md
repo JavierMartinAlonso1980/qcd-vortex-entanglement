@@ -209,4 +209,4 @@ MIT License - see [`LICENSE`](LICENSE)
 
 ## 📧 Contact
 
-For technical questions, open an [Issue](https://github.com/your-username/qcd-vortex-entanglement/issues).
+For technical questions, open an [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
