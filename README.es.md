@@ -145,7 +145,21 @@ Precisión en IBM Quantum Hardware: **87.5%** (8 valores de r × 3 temperaturas)
 - Eventos clasificados: **>6 mil millones** (0.8 ab⁻¹ equivalente)
 
 ## 📚 Citación
-## Acknowledgments
+
+Si utilizas este código, por favor cita:
+
+```bibtex
+@software{qcd_vortex_2026,
+  author = {Javier Manuel Martín Alonso},
+  title = {QCD Center Vortex Dynamics: Tensor Network Simulation \& Belle II Analysis},
+  year = {2026},
+  publisher = {Zenodo},
+  version = {1.0.0},
+  doi = {10.5281/zenodo.XXXXXXX},
+  url = {https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement}
+}
+```
+## 🙏 Acknowledgments
 
 ### Computational Frameworks
 
@@ -173,21 +187,6 @@ Key libraries:
 - SciPy: Scientific computing (Virtanen et al., 2020)
 - Qiskit: Quantum computing framework (IBM Quantum)
 ```
-
-Si utilizas este código, por favor cita:
-
-```bibtex
-@software{qcd_vortex_2026,
-  author = {Javier Manuel Martín Alonso},
-  title = {QCD Center Vortex Dynamics: Tensor Network Simulation \& Belle II Analysis},
-  year = {2026},
-  publisher = {Zenodo},
-  version = {1.0.0},
-  doi = {10.5281/zenodo.XXXXXXX},
-  url = {https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement}
-}
-```
-
 ## 🤝 Contribuciones
 
 Contribuciones son bienvenidas. Ver [`CONTRIBUTING.md`](CONTRIBUTING.md).
@@ -206,5 +205,6 @@ MIT License - ver [`LICENSE`](LICENSE)
 ## 📧 Contacto
 
 Para preguntas técnicas, abrir un [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
+
 
 
