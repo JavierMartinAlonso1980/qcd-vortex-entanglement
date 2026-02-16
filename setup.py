@@ -24,7 +24,7 @@ def get_version():
     init_file = Path('src/seemps_vortex/__init__.py')
     if init_file.exists():
         content = init_file.read_text()
-        match = re.search(r"^__version__\s*=\s*['"]([^'"]+)['"]", content, re.M)
+        match = re.search(r"^__version__\s*=\s*[\"']([^\"']+)[\"']", content, re.M)
         if match:
             return match.group(1)
     return '1.0.0'
