@@ -3,7 +3,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![arXiv](https://img.shields.io/badge/arXiv-2601.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2601.xxxxx)
 
 Implementación completa del marco teórico de **superradiancia de vórtices topológicos colectivos** en QCD mediante:
 - Simulación de dinámica de vórtices de centro usando **SeeMPS2** (Matrix Product States)
@@ -30,7 +29,7 @@ Este repositorio implementa los algoritmos descritos en:
 ### 1. Clonar repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/qcd-vortex-entanglement.git
+git clone https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement.git
 cd qcd-vortex-entanglement
 ```
 
@@ -151,13 +150,13 @@ Si utilizas este código, por favor cita:
 
 ```bibtex
 @software{qcd_vortex_2026,
-  author = {Tu Nombre},
+  author = {Javier Manuel Martín Alonso},
   title = {QCD Center Vortex Dynamics: Tensor Network Simulation \& Belle II Analysis},
   year = {2026},
   publisher = {Zenodo},
   version = {1.0.0},
   doi = {10.5281/zenodo.XXXXXXX},
-  url = {https://github.com/tu-usuario/qcd-vortex-entanglement}
+  url = {https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement}
 }
 ```
 
@@ -178,4 +177,5 @@ MIT License - ver [`LICENSE`](LICENSE)
 
 ## 📧 Contacto
 
-Para preguntas técnicas, abrir un [Issue](https://github.com/tu-usuario/qcd-vortex-entanglement/issues).
+Para preguntas técnicas, abrir un [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
+
