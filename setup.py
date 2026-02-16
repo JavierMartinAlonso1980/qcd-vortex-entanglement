@@ -9,7 +9,7 @@ A comprehensive framework for analyzing center vortex dynamics and entanglement
 in QCD using Matrix Product States (MPS), Belle II data analysis, and IBM 
 Quantum hardware validation.
 
-Author: Your Name
+Author: Javier Manuel Martín Alonso
 License: MIT
 Python: >=3.10
 """
