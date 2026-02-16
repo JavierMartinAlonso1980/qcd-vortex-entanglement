@@ -163,19 +163,20 @@ If you use this code, please cite:
 
 ### Computational Frameworks
 
-This project uses matrix product state (MPS) algorithms implemented with:
+This project uses SeeMPS for matrix product state algorithms:
 
-- **SeeMPS** by García-Molina et al. (2026): A Python library for tensor 
-  network algorithms based on the Matrix Product States formalism.
-  - Repository: https://github.com/juanjosegarciaripoll/seemps2
-  - Paper: arXiv:2601.16734
-  - License: MIT
+- García-Molina, P., Rodríguez-Aldavero, J.J., Gidi, J., & García-Ripoll, J.J. (2026). 
+  "SeeMPS: A Python-based Matrix Product State and Tensor Train Library". 
+  arXiv:2601.16734 [quant-ph]. https://arxiv.org/abs/2601.16734
 
-The MPS approach and quantum-inspired algorithms are based on:
+The quantum-inspired algorithms are based on:
 
-- García-Ripoll, J.J. (2021). "Quantum-inspired algorithms for multivariate 
-  analysis: from interpolation to partial differential equations". 
-  Quantum, 5, 431.
+- García-Ripoll, J.J. (2021). 
+  "Quantum-inspired algorithms for multivariate analysis: from interpolation to partial differential equations". 
+  Quantum, 5, 431. https://doi.org/10.22331/q-2021-04-15-431
+
+**Repository:** https://github.com/juanjosegarciaripoll/seemps2  
+**License:** MIT
 
 ### Software Libraries
 
