@@ -1,0 +1,17 @@
+{
+  "parameter_grid": {
+    "r_squeeze": [0.5, 0.8, 1.0, 1.2, 1.5, 2.0],
+    "T_temperature": [0.2, 0.5, 0.8, 1.0, 1.5, 2.0],
+    "chi_max": [32, 64, 128]
+  },
+  "simulation_params": {
+    "N_sites": 128,
+    "omega": 1.0,
+    "gamma_loss": 0.05,
+    "time_steps": 100,
+    "dt": 0.01
+  },
+  "output_dir": "./batch_results",
+  "checkpoint_interval": 10,
+  "save_full_trajectory": false
+}
