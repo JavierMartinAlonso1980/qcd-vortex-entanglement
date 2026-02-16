@@ -1,0 +1,28 @@
+# Dependabot configuration
+# Mantiene las dependencias actualizadas automáticamente
+
+version: 2
+updates:
+  # Dependencias de Python
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "tu-usuario-github"
+    labels:
+      - "dependencies"
+      - "python"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "tu-usuario-github"
+    labels:
+      - "dependencies"
+      - "github-actions"
