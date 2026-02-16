@@ -31,15 +31,15 @@ jobs:
 
     - name: Check formatting with black
       run: |
-        black --check src/ tests/
+        black --check src/ test/
 
     - name: Check import sorting with isort
       run: |
-        isort --check-only src/ tests/
+        isort --check-only src/ test/
 
     - name: Lint with flake8
       run: |
-        flake8 src/ tests/ --max-line-length=100 --extend-ignore=E203,W503
+        flake8 src/ test/ --max-line-length=100 --extend-ignore=E203,W503
 
     - name: Type check with mypy
       run: |
