@@ -1,0 +1,47 @@
+# GitHub Actions Workflow: Linting
+#
+# Verifica calidad de código
+
+name: Lint
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install linting tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install black flake8 isort mypy
+
+    - name: Check formatting with black
+      run: |
+        black --check src/ tests/
+
+    - name: Check import sorting with isort
+      run: |
+        isort --check-only src/ tests/
+
+    - name: Lint with flake8
+      run: |
+        flake8 src/ tests/ --max-line-length=100 --extend-ignore=E203,W503
+
+    - name: Type check with mypy
+      run: |
+        mypy src/ --ignore-missing-imports
+      continue-on-error: true  # No fallar por errores de tipos
