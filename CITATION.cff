@@ -1,8 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "QCD Center Vortex Dynamics: Tensor Network Simulation and Belle II Analysis"
-version: 1.0.0
-doi: 10.5281/zenodo.XXXXXXX
+version: 1.0.4
 date-released: 2026-02-15
 authors:
   - family-names: "Martín Alonso"
@@ -18,3 +17,4 @@ keywords:
   - "IBM Quantum"
   - "tensor networks"
 license: MIT
+
