@@ -3,7 +3,6 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![arXiv](https://img.shields.io/badge/arXiv-2601.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2601.xxxxx)
 
 Complete implementation of the **collective topological vortex superradiance** theoretical framework in QCD via:
 - Center vortex dynamics simulation using **SeeMPS2** (Matrix Product States)
@@ -30,7 +29,7 @@ This repository implements the algorithms described in:
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/your-username/qcd-vortex-entanglement.git
+git clone https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement.git
 cd qcd-vortex-entanglement
 ```
 
