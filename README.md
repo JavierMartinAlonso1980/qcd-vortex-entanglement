@@ -160,7 +160,34 @@ If you use this code, please cite:
   url = {https://github.com/your-username/qcd-vortex-entanglement}
 }
 ```
+## 🙏 Acknowledgments
 
+### Computational Frameworks
+
+This project uses matrix product state (MPS) algorithms implemented with:
+
+- **SeeMPS** by García-Molina et al. (2026): A Python library for tensor 
+  network algorithms based on the Matrix Product States formalism.
+  - Repository: https://github.com/juanjosegarciaripoll/seemps2
+  - Paper: arXiv:2601.16734
+  - License: MIT
+
+The MPS approach and quantum-inspired algorithms are based on:
+
+- García-Ripoll, J.J. (2021). "Quantum-inspired algorithms for multivariate 
+  analysis: from interpolation to partial differential equations". 
+  Quantum, 5, 431.
+
+### Software Libraries
+
+See [requirements.txt](requirements.txt) for complete list of dependencies.
+
+Key libraries:
+- SeeMPS: Matrix Product States (García-Ripoll)
+- NumPy: Array computing (Harris et al., 2020)
+- SciPy: Scientific computing (Virtanen et al., 2020)
+- Qiskit: Quantum computing framework (IBM Quantum)
+```
 ## 🤝 Contributing
 
 Contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
