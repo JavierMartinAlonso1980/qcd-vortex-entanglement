@@ -1,0 +1,84 @@
+# Conda environment for QCD Vortex Entanglement Analysis
+# 
+# Create environment:
+#   conda env create -f environment.yml
+#
+# Activate:
+#   conda activate qcd-vortex
+#
+# Update:
+#   conda env update -f environment.yml --prune
+
+name: qcd-vortex
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Python version
+  - python=3.10
+
+  # Core scientific libraries (from conda-forge for better compatibility)
+  - numpy>=1.24.0
+  - scipy>=1.10.0
+  - matplotlib>=3.7.0
+  - pandas>=2.0.0
+  - h5py>=3.8.0
+  - scikit-learn>=1.3.0
+  - tqdm>=4.65.0
+  - pyyaml>=6.0
+  - joblib>=1.3.0
+
+  # System dependencies (better via conda)
+  - gcc_linux-64  # Linux
+  - gxx_linux-64  # Linux
+  # - clang_osx-64  # macOS (uncomment if on macOS)
+  # - clangxx_osx-64  # macOS (uncomment if on macOS)
+  - cmake>=3.20
+  - make
+
+  # Optional: Belle II dependencies (ROOT)
+  # Uncomment if you need Belle II analysis
+  # - root>=6.28.0
+
+  # Optional: Jupyter
+  - jupyterlab>=4.0.0
+  - notebook>=7.0.0
+  - ipykernel>=6.25.0
+  - ipywidgets>=8.1.0
+
+  # Visualization
+  - plotly>=5.17.0
+  - seaborn>=0.13.0
+
+  # Development tools
+  - pytest>=7.4.0
+  - pytest-cov>=4.1.0
+  - black>=23.7.0
+  - flake8>=6.1.0
+  - mypy>=1.5.0
+  - isort>=5.12.0
+
+  # pip packages (not available in conda or better from PyPI)
+  - pip
+  - pip:
+      # Tensor networks (only via pip)
+      - seemps2>=1.0.0
+
+      # XGBoost (better from pip for latest version)
+      - xgboost>=2.0.0
+
+      # Belle II analysis (if not using ROOT from conda)
+      - uproot>=5.0.0
+      - awkward>=2.0.0
+      - particle>=0.23.0
+      - iminuit>=2.24.0
+
+      # IBM Quantum
+      - qiskit>=1.0.0
+      - qiskit-ibm-runtime>=0.19.0
+      - qiskit-aer>=0.13.0
+
+      # Install project in editable mode
+      - -e .

@@ -1,0 +1,38 @@
+{
+  "title": "QCD Center Vortex Dynamics: Tensor Network Simulation and Belle II Data Analysis",
+  "description": "Implementation of center vortex dynamics in QCD using SeeMPS tensor networks, massive data classification pipeline for Belle II on HPC clusters, and squeezed state validation on IBM Quantum System One.",
+  "creators": [
+    {
+      "name": "Tu Nombre",
+      "affiliation": "Tu Institución",
+      "orcid": "0000-0000-0000-0000"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "QCD confinement",
+    "center vortices",
+    "Matrix Product States",
+    "tensor networks",
+    "Belle II",
+    "quantum entanglement",
+    "squeezed states",
+    "IBM Quantum",
+    "high energy physics",
+    "computational physics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.XXXXXXX",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    }
+  ],
+  "communities": [
+    {
+      "identifier": "zenodo"
+    }
+  ],
+  "upload_type": "software",
+  "access_right": "open"
+}
