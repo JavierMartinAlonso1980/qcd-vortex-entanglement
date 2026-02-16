@@ -3,10 +3,11 @@ message: "If you use this software, please cite it as below."
 authors:
   - family-names: "Martín Alonso"
     given-names: "Javier Manuel"
-    orcid: "https://https://orcid.org/0009-0007-4051-6414"
+    orcid: "https://orcid.org/0009-0007-4051-6414"
     title: "QCD Center Vortex Dynamics: Tensor Network Simulation and Belle II Analysis"
     version: 1.0.6
     date-released:2026-02-16
+
 
 
 
