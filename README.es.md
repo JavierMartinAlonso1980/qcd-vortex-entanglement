@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
+Estado: Este es un prototipo de investigación temprano. Algunos tests siguen en revisión y ciertas funcionalidades son experimentales. Utilízalo con cautela y, por favor, informa de cualquier problema.
+
 Implementación completa del marco teórico de **superradiancia de vórtices topológicos colectivos** en QCD mediante:
 - Simulación de dinámica de vórtices de centro usando **SeeMPS2** (Matrix Product States)
 - Clasificación masiva de datos **Belle II** en clusters HPC (DIRAC grid)
@@ -12,9 +14,9 @@ Implementación completa del marco teórico de **superradiancia de vórtices top
 ## 📋 Descripción
 
 Este repositorio implementa los algoritmos descritos en:
-- *Topological Vortex Superradiance and Geometric EPR Bridges* (archivo file:9)
-- *Entanglement Dominance in Zero-Temperature Limit* (archivo file:6)
-- *Belle II Fermionic Bulk-Boundary Algorithm Adaptation* (archivo file:3)
+- *Topological Vortex Superradiance and Geometric EPR Bridges* 
+- *Entanglement Dominance in Zero-Temperature Limit* 
+- *Belle II Fermionic Bulk-Boundary Algorithm Adaptation*
 
 ### Características principales
 
@@ -205,6 +207,7 @@ MIT License - ver [`LICENSE`](LICENSE)
 ## 📧 Contacto
 
 Para preguntas técnicas, abrir un [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
+
 
 
 
