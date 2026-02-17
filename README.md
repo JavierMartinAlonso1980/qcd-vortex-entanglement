@@ -187,7 +187,7 @@ Key libraries:
 - NumPy: Array computing (Harris et al., 2020)
 - SciPy: Scientific computing (Virtanen et al., 2020)
 - Qiskit: Quantum computing framework (IBM Quantum)
-```
+
 
 ## 🤝 Contributing
 
@@ -196,7 +196,7 @@ Contributions are welcome! Please:
 - Fork and submit a Pull Request for code changes
 - Follow PEP 8 and add tests when applicable
 
-Questions? Contact [jmma@movistar.es] (mailto:jmma@movistar.es)
+Questions? Contact [jmma@movistar.es](mailto:jmma@movistar.es)
 
 ## 📄 License
 
