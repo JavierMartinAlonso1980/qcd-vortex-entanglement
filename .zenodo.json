@@ -3,9 +3,9 @@
   "description": "Implementation of center vortex dynamics in QCD using SeeMPS tensor networks, massive data classification pipeline for Belle II on HPC clusters, and squeezed state validation on IBM Quantum System One.",
   "creators": [
     {
-      "name": "Tu Nombre",
-      "affiliation": "Tu Institución",
-      "orcid": "0000-0000-0000-0000"
+      "name": "Javier Manuel Martín Alonso",
+      "affiliation": "Independent Theoretical Physics Researcher",
+      "orcid": "0009-0007-4051-6414"
     }
   ],
   "license": "MIT",
@@ -36,3 +36,4 @@
   "upload_type": "software",
   "access_right": "open"
 }
+
