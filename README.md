@@ -206,7 +206,7 @@ MIT License - see [`LICENSE`](LICENSE)
 
 ## 🔗 Links
 
-- **Zenodo DOI**: https://doi.org/10.5281/zenodo.XXXXXXX
+- **Zenodo DOI**: https://doi.org/10.5281/zenodo.18672797
 - **Belle II Computing**: https://www.belle2.org/computing/
 - **IBM Quantum**: https://quantum.ibm.com/
 - **SeeMPS2 GitHub**: https://github.com/juanjosegarciaripoll/seemps2
