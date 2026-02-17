@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
+> **Status:** This is an early research prototype. Some unit tests are still under revision and certain features are experimental. Use with caution and please report issues.
+
 Complete implementation of the **collective topological vortex superradiance** theoretical framework in QCD via:
 - Center vortex dynamics simulation using **SeeMPS2** (Matrix Product States)
 - Massive **Belle II** data classification on HPC clusters (DIRAC grid)
