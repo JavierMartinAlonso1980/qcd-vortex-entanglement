@@ -14,9 +14,9 @@ Complete implementation of the **collective topological vortex superradiance** t
 ## 📋 Description
 
 This repository implements the algorithms described in:
-- *Topological Vortex Superradiance and Geometric EPR Bridges* (file file:9)
-- *Entanglement Dominance in Zero-Temperature Limit* (file file:6)
-- *Belle II Fermionic Bulk-Boundary Algorithm Adaptation* (file file:3)
+- *Topological Vortex Superradiance and Geometric EPR Bridges* 
+- *Entanglement Dominance in Zero-Temperature Limit* 
+- *Belle II Fermionic Bulk-Boundary Algorithm Adaptation*
 
 ### Key Features
 
