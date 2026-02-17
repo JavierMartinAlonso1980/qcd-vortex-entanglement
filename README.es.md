@@ -186,7 +186,7 @@ Key libraries:
 - NumPy: Array computing (Harris et al., 2020)
 - SciPy: Scientific computing (Virtanen et al., 2020)
 - Qiskit: Quantum computing framework (IBM Quantum)
-```
+
 ## 🤝 Contribuciones
 
 Contribuciones son bienvenidas. Ver [`CONTRIBUTING.md`](CONTRIBUTING.md).
@@ -205,6 +205,7 @@ MIT License - ver [`LICENSE`](LICENSE)
 ## 📧 Contacto
 
 Para preguntas técnicas, abrir un [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
+
 
 
 
