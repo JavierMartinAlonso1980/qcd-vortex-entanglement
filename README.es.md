@@ -156,8 +156,8 @@ Si utilizas este código, por favor cita:
   title = {QCD Center Vortex Dynamics: Tensor Network Simulation \& Belle II Analysis},
   year = {2026},
   publisher = {Zenodo},
-  version = {1.0.0},
-  doi = {10.5281/zenodo.XXXXXXX},
+  version = {1.0.9},
+  doi = {10.5281/zenodo.18672797},
   url = {https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement}
 }
 ```
@@ -207,6 +207,7 @@ MIT License - ver [`LICENSE`](LICENSE)
 ## 📧 Contacto
 
 Para preguntas técnicas, abrir un [Issue](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/issues).
+
 
 
 
