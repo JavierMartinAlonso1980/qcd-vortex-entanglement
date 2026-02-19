@@ -1,346 +1,208 @@
-# Test Suite Documentation
+# Test Suite — QCD Vortex Entanglement
 
 Comprehensive test suite for the QCD Vortex Entanglement project.
 
 ## Overview
 
-- **Total Tests**: ~81 tests across 2 modules
-- **Coverage Target**: > 90%
-- **Framework**: pytest 7.0+
-- **Execution Time**: ~5-10 minutes (full suite)
-
-## Test Structure
-
-```
-tests/
-├── __init__.py              # Package initialization
-├── conftest.py              # Shared fixtures and configuration
-├── test_vortex_mps.py       # MPS simulation tests (43 tests)
-└── test_entanglement.py     # Entanglement measure tests (38 tests)
-```
-
-## Test Coverage
-
-### test_vortex_mps.py
-
-Tests for QCD vortex MPS simulations:
-
-- **MPS Initialization** (5 tests)
-  - System creation
-  - Product state initialization
-  - Random state initialization
-  - GHZ state preparation
-  - Parameter validation
-
-- **Collective Squeezing** (4 tests)
-  - Squeezing operator creation
-  - Parameter range validation
-  - Collective mode preparation
-  - Entanglement enhancement
-
-- **TMST State Properties** (6 tests)
-  - State creation
-  - Thermal occupation calculation
-  - Entanglement threshold (Theorem 4.3.1)
-  - Critical squeezing
-  - Log-negativity computation
-  - Covariance matrix
-
-- **Time Evolution** (3 tests)
-  - Short-time Lindblad evolution
-  - Decoherence effects
-  - Long-time dynamics
-
-- **MVC Threshold Detection** (3 tests)
-  - Detector initialization
-  - Critical density calculation
-  - Confinement phase detection
-  - Hadronization multiplicity
-
-- **Exceptional Points** (5 tests)
-  - EP analyzer creation
-  - Effective Hamiltonian
-  - EP detection
-  - Petermann factor
-  - PT-symmetry phases
-
-- **Entanglement Measures** (4 tests)
-  - Entropy of product states
-  - Entropy of GHZ states
-  - Entanglement spectrum
-  - Mutual information
-
-- **Export/Import** (3 tests)
-  - HDF5 export
-  - HDF5 import
-  - Metadata preservation
-
-- **Performance & Edge Cases** (10 tests)
-  - Zero squeezing
-  - High/low temperature limits
-  - Different system sizes
-  - Boundary conditions
-
-### test_entanglement.py
-
-Tests for entanglement quantification:
-
-- **Log-Negativity** (6 tests)
-  - Product state (zero negativity)
-  - EPR state (positive negativity)
-  - Thermal states
-  - Bounds verification
-  - Monotonicity with squeezing
-  - Density matrix computation
-
-- **Concurrence** (5 tests)
-  - Bell state (maximal)
-  - Product state (zero)
-  - Werner states
-  - Bounds verification
-  - Gaussian state approximation
-
-- **Entanglement Witnesses** (4 tests)
-  - Bell witness
-  - Witness on separable states
-  - PPT criterion
-  - CCNR criterion
-
-- **Bell Inequalities** (5 tests)
-  - CHSH classical bound
-  - CHSH quantum violation
-  - Computation from correlations
-  - Clauser-Horne inequality
-  - Mermin inequality (3 qubits)
-
-- **Correlation Functions** (4 tests)
-  - Spin correlations (product states)
-  - Spin correlations (Bell states)
-  - Two-point functions
-  - Connected correlations
-
-- **Separability Criteria** (4 tests)
-  - PPT on separable states
-  - PPT on entangled states
-  - Reduction criterion
-  - Cross-norm criterion
-
-- **Gaussian State Entanglement** (4 tests)
-  - Vacuum state (separable)
-  - Squeezed state (entangled)
-  - Symplectic eigenvalues
-  - Logarithmic negativity scaling
-
-## Running Tests
-
-### Basic Execution
-
-```bash
-# Run all tests
-pytest tests/ -v
-
-# Run specific test file
-pytest tests/test_vortex_mps.py -v
-pytest tests/test_entanglement.py -v
-
-# Run specific test class
-pytest tests/test_vortex_mps.py::TestMPSInitialization -v
-
-# Run specific test
-pytest tests/test_entanglement.py::TestLogNegativity::test_epr_state_positive_negativity -v
-```
-
-### Advanced Options
-
-```bash
-# Run with coverage report
-pytest tests/ --cov=src --cov-report=html --cov-report=term
-
-# Parallel execution (faster)
-pytest tests/ -n auto
-
-# Stop on first failure
-pytest tests/ -x
-
-# Run only fast tests (exclude slow)
-pytest tests/ -m "not slow"
-
-# Verbose output with print statements
-pytest tests/ -v -s
-
-# Only run failed tests from last run
-pytest tests/ --lf
-
-# Detailed failure output
-pytest tests/ -vv --tb=long
-```
-
-### Markers
-
-Tests are marked with custom markers:
-
-```bash
-# Run only slow tests
-pytest tests/ -m slow
-
-# Run only integration tests
-pytest tests/ -m integration
-
-# Run only GPU tests
-pytest tests/ -m gpu
-```
-
-## Coverage Report
-
-Generate HTML coverage report:
-
-```bash
-pytest tests/ --cov=src --cov-report=html
-open htmlcov/index.html  # View in browser
-```
-
-Expected coverage by module:
-- `seemps_vortex/`: > 90%
-- `belle2_analysis/`: > 85%
-- `ibm_validation/`: > 80%
-
-## Continuous Integration
-
-Tests run automatically on:
-- Every push to main branch
-- Every pull request
-- Nightly builds
-
-CI configuration: `.github/workflows/tests.yml`
-
-## Writing New Tests
-
-### Template
-
-```python
-import pytest
-import numpy as np
-
-class TestNewFeature:
-    """Test description."""
-
-    @pytest.fixture
-    def setup_data(self):
-        """Fixture for test data."""
-        return some_data
-
-    def test_basic_functionality(self, setup_data):
-        """Test basic functionality."""
-        result = my_function(setup_data)
-        assert result == expected_value
-
-    def test_edge_case(self):
-        """Test edge case."""
-        with pytest.raises(ValueError):
-            my_function(invalid_input)
-
-    @pytest.mark.slow
-    def test_expensive_computation(self):
-        """Test marked as slow."""
-        result = expensive_function()
-        assert result > 0
-```
-
-### Best Practices
-
-1. **Use descriptive names**: `test_feature_behavior_condition`
-2. **One assertion per test**: Focus on single behavior
-3. **Use fixtures**: Share setup code with `@pytest.fixture`
-4. **Parametrize**: Test multiple inputs with `@pytest.mark.parametrize`
-5. **Mark slow tests**: Use `@pytest.mark.slow` for tests > 1 second
-6. **Mock external dependencies**: Use `unittest.mock` or `pytest-mock`
-7. **Test edge cases**: Zero, negative, infinity, empty inputs
-8. **Check error handling**: Verify exceptions with `pytest.raises`
-
-## Fixtures
-
-Available in `conftest.py`:
-
-- `reset_random_seed`: Ensures reproducibility
-- `suppress_warnings`: Filters out known warnings
-- `tolerance`: Standard numerical tolerance (1e-10)
-- `temp_directory`: Temporary directory for outputs
-
-## Debugging Failed Tests
-
-```bash
-# Run with debugger on failure
-pytest tests/ --pdb
-
-# Show local variables on failure
-pytest tests/ --showlocals
-
-# Capture print output
-pytest tests/ -s
-
-# Increase verbosity
-pytest tests/ -vv
-```
-
-## Performance Profiling
-
-```bash
-# Profile test execution time
-pytest tests/ --durations=10
-
-# Profile with cProfile
-pytest tests/ --profile
-
-# Memory profiling (requires pytest-memprof)
-pytest tests/ --memprof
-```
-
-## Troubleshooting
-
-### Issue: Import errors
-
-```bash
-# Install in editable mode
-pip install -e .
-
-# Or add to PYTHONPATH
-export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
-```
-
-### Issue: SeeMPS not found
-
-```bash
-# Install SeeMPS
-pip install seemps2
-```
-
-### Issue: Tests hang
-
-```bash
-# Set timeout
-pytest tests/ --timeout=60
-```
-
-### Issue: Random failures
-
-- Check if test depends on random seed
-- Use `@pytest.fixture(autouse=True)` to reset seed
-- Increase numerical tolerance
-
-## Resources
-
-- **pytest docs**: https://docs.pytest.org/
-- **Coverage.py**: https://coverage.readthedocs.io/
-- **pytest plugins**: https://docs.pytest.org/en/latest/reference/plugin_list.html
-
-## Contributing
-
-When adding new features:
-1. Write tests first (TDD)
-2. Ensure > 90% coverage
-3. Run full test suite before PR
-4. Update this documentation
+| Metric | Value |
+|---|---|
+| Total tests | ~95 across 4 modules |
+| Coverage target | > 90% |
+| Framework | pytest 7.0+ |
+| Execution time | ~5–10 min (full suite) |
 
 ---
 
-**Last Updated**: February 16, 2026
+## Directory Structure
+
+```
+test/
+├── __init__.py                  # Package initialization (v1.1.0)
+├── conftest.py                  # Shared fixtures and markers
+├── README.md                    # This file
+├── validation_tools.py          # Shared injection helpers (TMST + Qiskit)
+├── test_vortex_mps.py           # MPS simulation tests (43 tests)
+├── test_entanglement.py         # Entanglement measure tests (38 tests)
+├── test_tmst_injection.py       # TMST injection tests — Theorem 4.3.1 (5 tests)
+└── test_injection_qiskit.py     # Qiskit 2-qubit injection tests (4 tests)
+```
+
+---
+
+## Quick Start
+
+```bash
+pip install -e ".[dev]"
+pytest test/ -v
+pip install -r requirements-quantum.txt
+pytest test/ -v
+pytest test/test_tmst_injection.py test/test_injection_qiskit.py -v
+```
+
+---
+
+## Test Modules
+
+### `test_vortex_mps.py` — 43 tests
+
+| Group | Tests |
+|---|---|
+| MPS Initialization | 5 |
+| Collective Squeezing | 4 |
+| TMST State Properties | 6 |
+| Time Evolution | 3 |
+| MVC Threshold Detection | 3 |
+| Exceptional Points | 5 |
+| Entanglement Measures | 4 |
+| Export / Import HDF5 | 3 |
+| Performance & Edge Cases | 10 |
+
+### `test_entanglement.py` — 38 tests
+
+| Group | Tests |
+|---|---|
+| Log-Negativity | 6 |
+| Concurrence | 5 |
+| Entanglement Witnesses | 4 |
+| Bell Inequalities (CHSH, Mermin) | 5 |
+| Correlation Functions | 4 |
+| Separability Criteria (PPT, CCNR) | 4 |
+| Gaussian State Entanglement | 4 |
+
+### `test_tmst_injection.py` — 5 tests *(NEW)*
+
+- **`test_tmst_separable_below_threshold`** (×7 temps) — E_N ≈ 0 for r < r_c(T)
+- **`test_tmst_entangled_above_threshold`** (×7 temps) — E_N > 0 for r > r_c(T)
+- **`test_log_negativity_monotone_with_squeezing`** (×3 temps) — fixes failing monotonicity test
+- **`test_nu_minus_below_half_iff_entangled`** (×4 temps) — Simon criterion, ν₋(r_c)=½ exactly
+- **`test_zero_temperature_limit`** — r_c → 0, E_N > 0 for any r > 0
+- **`test_critical_squeezing_formula`** (×10 temps) — Theorem 4.3.1 self-consistency
+
+### `test_injection_qiskit.py` — 4 tests *(NEW)*
+
+Auto-skipped if `qiskit` / `qiskit-aer` not installed.
+
+- **`test_bell_state_log_negativity`** — |Φ+⟩ must yield E_N ≈ 1.0
+- **`test_product_noise_log_negativity`** (×5 seeds) — RX noise must yield E_N ≈ 0
+- **`test_bell_fidelity_is_one`** — fidelity with ideal |Φ+⟩ = 1.0
+- **`test_injection_signal_clearly_above_noise`** — E_N(signal) − E_N(noise) > 0.8
+- **`test_full_injection_run_passes`** — `run_injection_test()` returns `passed=True`
+
+---
+
+## Running Tests
+
+```bash
+# Core tests (no Qiskit)
+pytest test/ -v
+pytest test/ --ignore=test/test_injection_qiskit.py -v
+pytest test/ --ignore=test/test_injection_qiskit.py --cov=src --cov-report=html --cov-report=term
+pytest test/ -n auto
+pytest test/ -x
+pytest test/ -m "not slow"
+
+# Quantum tests
+pip install -r requirements-quantum.txt
+pytest test/test_injection_qiskit.py -v
+pytest test/ -m quantum -v
+
+# Useful flags
+pytest test/ -v -s
+pytest test/ --lf
+pytest test/ -vv --tb=long
+pytest test/ --timeout=60
+pytest test/ --durations=10
+```
+
+---
+
+## Markers
+
+| Marker | Description |
+|---|---|
+| `slow` | Tests > 1 second |
+| `integration` | Integration tests |
+| `gpu` | Requires GPU/CUDA |
+| `quantum` | Requires qiskit + qiskit-aer *(NEW)* |
+
+```bash
+pytest test/ -m "not quantum"
+pytest test/ -m "not slow"
+```
+
+---
+
+## Fixtures (`conftest.py`)
+
+| Fixture | Scope | Description |
+|---|---|---|
+| `reset_random_seed` | function (autouse) | `np.random.seed(42)` before each test |
+| `suppress_warnings` | function (autouse) | Filters `DeprecationWarning` |
+| `tolerance` | function | Returns `1e-10` |
+| `temp_directory` | function | `tmp_path` directory |
+| `qiskit_available` | session *(NEW)* | `True`/`False` for qiskit-aer |
+
+```python
+def test_something(qiskit_available):
+    if not qiskit_available:
+        pytest.skip("qiskit not installed")
+```
+
+---
+
+## CI Jobs (`.github/workflows/tests.yml`)
+
+**Job 1 — Core** (Ubuntu + macOS + Windows × Python 3.10, 3.11):
+
+```bash
+pytest test/ --ignore=test/test_injection_qiskit.py --cov=src --cov-report=xml
+```
+
+**Job 2 — Quantum** (Ubuntu × Python 3.11, `continue-on-error: true`):
+
+```bash
+pip install -r requirements-quantum.txt
+pytest test/test_injection_qiskit.py -v
+```
+
+The quantum job **never blocks a merge**.
+
+---
+
+## Coverage Targets
+
+| Module | Target |
+|---|---|
+| `src/seemps_vortex/` | > 90% |
+| `src/belle2_analysis/` | > 85% |
+| `src/ibm_validation/` | > 80% |
+
+```bash
+pytest test/ --cov=src --cov-report=html
+open htmlcov/index.html
+```
+
+---
+
+## Troubleshooting
+
+| Problem | Solution |
+|---|---|
+| `ModuleNotFoundError: src` | `pip install -e .` |
+| `ModuleNotFoundError: seemps2` | `pip install seemps2` |
+| Qiskit tests skipped | `pip install -r requirements-quantum.txt` |
+| Tests hang | `pytest test/ --timeout=60` |
+| `test.validation_tools` not found | Confirm folder is `test/` not `tests/` |
+
+---
+
+## Resources
+
+- [pytest docs](https://docs.pytest.org/)
+- [Coverage.py](https://coverage.readthedocs.io/)
+- [Qiskit docs](https://docs.quantum.ibm.com/)
+- [SeeMPS](https://github.com/juanjosegarciaripoll/seemps2)
+
+---
+
+**Last Updated**: February 2026 | **Version**: 1.1.0
