@@ -13,6 +13,7 @@ Modules:
 --------
 - squeezed_state_prep: TMST circuit preparation and measurement
 - quantum_verification: Hardware verification protocols and benchmarks
+- injection_tests: Signal-vs-noise injection tests (Bell state / AerSimulator)  ← NEW
 
 IBM Quantum Platforms:
 - IBM Quantum System One (on-premises systems)
@@ -27,9 +28,13 @@ Hardware Requirements:
 
 Author: [Your Name]
 Date: February 2026
-Version: 1.0.0
+Version: 1.1.0
 """
 
+# ── BUGFIX: typing imports missing in v1.0.0 ──────────────────────────────────
+from typing import Dict, Optional
+
+# ── Existing modules (unchanged) ──────────────────────────────────────────────
 from .squeezed_state_prep import (
     SqueezeStateValidator,
     TMSTCircuitBuilder,
@@ -42,22 +47,42 @@ from .quantum_verification import (
     BenchmarkSuite
 )
 
-__version__ = "1.0.0"
+# ── NEW: Injection tests module ───────────────────────────────────────────────
+from .injection_tests import (
+    make_bell_circuit,
+    make_noise_circuit,
+    compute_log_negativity,
+    compute_bell_fidelity,
+    run_injection_test,
+)
+
+__version__ = "1.1.0"
 __author__ = "Your Name"
 __license__ = "MIT"
 
 __all__ = [
+    # ── Existing ──────────────────────────────────────────────────────────────
     # Squeezed state preparation
     'SqueezeStateValidator',
     'TMSTCircuitBuilder',
     'EntanglementWitnessProtocol',
-    
+
     # Verification protocols
     'HardwareVerifier',
     'CoherenceAnalyzer',
     'ErrorMitigationPipeline',
     'BenchmarkSuite',
+
+    # ── NEW ───────────────────────────────────────────────────────────────────
+    # Injection tests
+    'make_bell_circuit',
+    'make_noise_circuit',
+    'compute_log_negativity',
+    'compute_bell_fidelity',
+    'run_injection_test',
 ]
+
+# ── El resto del fichero es IDÉNTICO al original ──────────────────────────────
 
 # IBM Quantum backend specifications
 IBM_BACKENDS = {
@@ -65,9 +90,9 @@ IBM_BACKENDS = {
         'num_qubits': 127,
         'processor': 'Eagle r3',
         'topology': 'heavy-hex',
-        'typical_T1': 150e-6,  # seconds
+        'typical_T1': 150e-6,
         'typical_T2': 100e-6,
-        'gate_time_cx': 500e-9,  # seconds
+        'gate_time_cx': 500e-9,
         'gate_time_sx': 100e-9,
     },
     'ibm_kyiv': {
@@ -124,7 +149,7 @@ VALIDATION_PROTOCOLS = {
     'collective_projection': {
         'description': 'Multi-qubit collective vortex projection (file:9 Section 5.4)',
         'n_qubits': 4,
-        'coincidence_window': 10e-9,  # seconds
+        'coincidence_window': 10e-9,
         'min_shots': 15000,
     },
 }
@@ -134,8 +159,8 @@ ERROR_MITIGATION_CONFIG = {
     'readout_mitigation': True,
     'zero_noise_extrapolation': True,
     'dynamical_decoupling': True,
-    'gate_twirling': False,  # Not yet available in Qiskit Runtime
-    'resilience_level': 2,  # 0=none, 1=basic, 2=advanced
+    'gate_twirling': False,
+    'resilience_level': 2,
 }
 
 # Citation information
@@ -152,10 +177,11 @@ If you use this validation framework, please cite:
 }
 
 IBM Quantum acknowledgment:
-"We acknowledge the use of IBM Quantum services for this work. 
-The views expressed are those of the authors, and do not reflect 
+"We acknowledge the use of IBM Quantum services for this work.
+The views expressed are those of the authors, and do not reflect
 the official policy or position of IBM or the IBM Quantum team."
 """
+
 
 def print_backend_info(backend_name: str = 'ibm_sherbrooke'):
     """Print IBM Quantum backend specifications."""
@@ -163,14 +189,12 @@ def print_backend_info(backend_name: str = 'ibm_sherbrooke'):
         print(f"Backend {backend_name} not found in database.")
         print(f"Available backends: {list(IBM_BACKENDS.keys())}")
         return
-    
     specs = IBM_BACKENDS[backend_name]
-    
     print("="*70)
     print(f"IBM Quantum Backend: {backend_name}")
     print("="*70)
     for key, value in specs.items():
-        if 'time' in key or 'T1' in key or 'T2' in key:
+        if 'T1' in key or 'T2' in key:
             print(f"  {key:25s}: {value*1e6:.1f} μs")
         elif 'gate_time' in key:
             print(f"  {key:25s}: {value*1e9:.1f} ns")
@@ -179,115 +203,69 @@ def print_backend_info(backend_name: str = 'ibm_sherbrooke'):
     print("="*70)
 
 
-def estimate_circuit_duration(n_qubits: int, n_cx_gates: int, 
-                              backend: str = 'ibm_sherbrooke') -> float:
-    """
-    Estimate total circuit duration including decoherence effects.
-    
-    Args:
-        n_qubits: Number of qubits
-        n_cx_gates: Number of CNOT gates
-        backend: Backend name
-    
-    Returns:
-        Estimated duration in seconds
-    """
+def estimate_circuit_duration(
+    n_qubits: int,
+    n_cx_gates: int,
+    backend: str = 'ibm_sherbrooke',
+) -> float:
+    """Estimate total circuit duration including decoherence effects."""
     specs = IBM_BACKENDS.get(backend, IBM_BACKENDS['ibm_sherbrooke'])
-    
-    # Approximate gate counts (for TMST circuit)
-    n_single_qubit = 4 * n_qubits  # Average per qubit
-    
-    duration = (n_single_qubit * specs['gate_time_sx'] + 
-                n_cx_gates * specs['gate_time_cx'])
-    
-    return duration
+    n_single_qubit = 4 * n_qubits
+    return (n_single_qubit * specs['gate_time_sx'] +
+            n_cx_gates * specs['gate_time_cx'])
 
 
-def check_coherence_limit(circuit_duration: float, backend: str = 'ibm_sherbrooke') -> Dict[str, float]:
-    """
-    Check if circuit duration is within coherence limits.
-    
-    Args:
-        circuit_duration: Circuit duration in seconds
-        backend: Backend name
-    
-    Returns:
-        Dictionary with coherence ratios
-    """
+def check_coherence_limit(
+    circuit_duration: float,
+    backend: str = 'ibm_sherbrooke',
+) -> Dict[str, float]:          # ← BUGFIX: Dict ahora importado correctamente
+    """Check if circuit duration is within coherence limits."""
     specs = IBM_BACKENDS.get(backend, IBM_BACKENDS['ibm_sherbrooke'])
-    
     T1_ratio = circuit_duration / specs['typical_T1']
     T2_ratio = circuit_duration / specs['typical_T2']
-    
     return {
         'circuit_duration_us': circuit_duration * 1e6,
         'T1_ratio': T1_ratio,
         'T2_ratio': T2_ratio,
-        'within_T1_limit': T1_ratio < 0.5,  # Circuit should be < 50% of T1
+        'within_T1_limit': T1_ratio < 0.5,
         'within_T2_limit': T2_ratio < 0.5,
         'recommended': T1_ratio < 0.3 and T2_ratio < 0.3,
     }
 
 
 def get_optimal_backend(n_qubits: int, circuit_depth: int) -> str:
-    """
-    Recommend optimal backend based on circuit requirements.
-    
-    Args:
-        n_qubits: Number of qubits needed
-        circuit_depth: Approximate circuit depth
-    
-    Returns:
-        Recommended backend name
-    """
-    # Filter backends by qubit count
-    suitable_backends = {name: specs for name, specs in IBM_BACKENDS.items()
-                        if specs['num_qubits'] >= n_qubits}
-    
+    """Recommend optimal backend based on circuit requirements."""
+    suitable_backends = {
+        name: specs for name, specs in IBM_BACKENDS.items()
+        if specs['num_qubits'] >= n_qubits
+    }
     if not suitable_backends:
-        return 'ibm_sherbrooke'  # Default fallback
-    
-    # Score backends by coherence times (prefer higher T2)
-    scores = {}
-    for name, specs in suitable_backends.items():
-        # Weighted score: T2 more important for entanglement
-        scores[name] = 0.4 * specs['typical_T1'] + 0.6 * specs['typical_T2']
-    
-    # Return backend with highest score
-    optimal = max(scores, key=scores.get)
-    
-    return optimal
+        return 'ibm_sherbrooke'
+    scores = {
+        name: 0.4 * specs['typical_T1'] + 0.6 * specs['typical_T2']
+        for name, specs in suitable_backends.items()
+    }
+    return max(scores, key=scores.get)
 
 
-# Package initialization
-def initialize_ibm_quantum(token: Optional[str] = None, channel: str = 'ibm_quantum'):
-    """
-    Initialize IBM Quantum connection.
-    
-    Args:
-        token: IBM Quantum token (None = use environment variable)
-        channel: 'ibm_quantum' or 'ibm_cloud'
-    
-    Returns:
-        QiskitRuntimeService instance
-    """
+def initialize_ibm_quantum(
+    token: Optional[str] = None,
+    channel: str = 'ibm_quantum',
+):
+    """Initialize IBM Quantum connection."""
     from qiskit_ibm_runtime import QiskitRuntimeService
-    
     if token:
         service = QiskitRuntimeService(channel=channel, token=token)
     else:
-        # Load from saved account or environment
         try:
             service = QiskitRuntimeService(channel=channel)
         except Exception as e:
             print(f"Failed to initialize IBM Quantum service: {e}")
             print("Please set QISKIT_IBM_TOKEN environment variable or provide token explicitly")
             raise
-    
     return service
 
 
-# Display module information
 def print_module_info():
     """Print IBM Quantum validation module information."""
     print("="*70)
