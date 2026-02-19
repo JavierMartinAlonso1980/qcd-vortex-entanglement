@@ -19,7 +19,7 @@ Modules:
 - tmst_threshold: Theorem 4.3.1 analytic threshold + phase-transition events  ← NEW
 - phase_diagram: Stable visualization API for TMST phase diagrams             ← NEW
 
-Author: [Your Name]
+Author: [Javier Manuel Martín Alonso]
 Date: February 2026
 Version: 1.1.0
 """
