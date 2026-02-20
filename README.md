@@ -194,9 +194,12 @@ qcd-vortex-entanglement/
 │   ├── conftest.py
 │   ├── validation_tools.py          # Shared injection helpers (v1.1.0)
 │   ├── test_vortex_mps.py
-│   ├── test_entanglement.py
-│   ├── test_tmst_injection.py       # TMST injection tests (v1.1.0)
 │   ├── test_injection_qiskit.py     # Qiskit injection tests (v1.1.0)
+│   ├── gaussian/                    # Gaussian / TMST validation tests
+│   │   ├── conftest.py
+│   │   ├── test_entanglement.py     # Entanglement measures and witnesses
+│   │   ├── test_tmst_injection.py   # TMST injection tests (v1.1.0)
+│   │   └── run_toy_test.py
 │   └── README.md
 ├── scripts/
 │   ├── hpc_submit_belle2.sh         # SLURM script for HPC
