@@ -17,6 +17,10 @@ This repository implements the algorithms described in:
 - *Topological Vortex Superradiance and Geometric EPR Bridges*
 - *Entanglement Dominance in Zero-Temperature Limit*
 - *Belle II Fermionic Bulk-Boundary Algorithm Adaptation*
+  
+## 📄 Validation
+Test-verified entanglement thresholds and deployment readiness.
+👉 **[Read the Simulation Note (PDF)](Test-Verified_Entanglement_Thresholds.pdf)**
 
 ### Key Features
 
