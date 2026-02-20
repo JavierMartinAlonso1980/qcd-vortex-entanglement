@@ -1,6 +1,6 @@
 # QCD Center Vortex Dynamics: Tensor Network Simulation & Belle II Analysis
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18672797.svg)](https://doi.org/10.5281/zenodo.18672797)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18672796.svg)](https://doi.org/10.5281/zenodo.18672796)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
@@ -235,7 +235,7 @@ If you use this code, please cite:
   year = {2026},
   publisher = {Zenodo},
   version = {1.1.0},
-  doi = {10.5281/zenodo.18672797},
+  doi = {10.5281/zenodo.18672796},
   url = {https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement}
 }
 ```
@@ -284,7 +284,7 @@ MIT License — see [`LICENSE`](LICENSE)
 
 ## 🔗 Links
 
-- **Zenodo DOI**: https://doi.org/10.5281/zenodo.18672797
+- **Zenodo DOI**: https://doi.org/10.5281/zenodo.18672796
 - **Belle II Computing**: https://www.belle2.org/computing/
 - **IBM Quantum**: https://quantum.ibm.com/
 - **SeeMPS2 GitHub**: https://github.com/juanjosegarciaripoll/seemps2
