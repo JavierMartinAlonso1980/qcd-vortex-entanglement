@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-> **Status:** Research prototype — v1.1.0. Core TMST tests and injection validation are stable. Belle II and IBM Quantum modules are experimental. Please report issues.
+> **Status:** v1.1.0 — Test-verified Gaussian/TMST entanglement thresholds are stable (pytest). IBM Quantum execution and Belle II workflow remain experimental.
 
 Complete implementation of the **collective topological vortex superradiance** theoretical framework in QCD via:
 - Center vortex dynamics simulation using **SeeMPS2** (Matrix Product States)
