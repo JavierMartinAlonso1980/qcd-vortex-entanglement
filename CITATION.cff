@@ -1,12 +1,23 @@
-cff-version: 1.1.0
+cff-version: 1.1.1
 message: "If you use this software, please cite it as below."
 authors:
   - family-names: "Martín Alonso"
     given-names: "Javier Manuel"
     orcid: "https://orcid.org/0009-0007-4051-6414"
     title: "QCD Center Vortex Dynamics: Tensor Network Simulation and Belle II Analysis"
-    version: 1.0.9
-    date-released:2026-02-17
+    doi:https://doi.org/10.5281/zenodo.18672797
+    url:https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement
+    version: 1.1.0
+    date-released:2026-02-20
+preferred-citation:
+  type: pre-print
+  authors:
+  - family-names: "Martín Alonso"
+    given-names: "Javier Manuel"
+  title: "Topological Vortex Superradiance and TMST"
+  year: 2026
+  publisher: "Zenodo"
+  doi: https://doi.org/10.5281/zenodo.18207031
 
 
 
