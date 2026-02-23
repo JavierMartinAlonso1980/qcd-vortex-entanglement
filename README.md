@@ -19,8 +19,12 @@ This repository implements the algorithms described in:
 - *Belle II Fermionic Bulk-Boundary Algorithm Adaptation*
   
 ## 📄 Validation
-Test-verified entanglement thresholds and deployment readiness.
-👉 **[Read the Simulation Note (PDF)](Test-Verified_Entanglement_Thresholds.pdf)**
+
+Test-verified entanglement thresholds and deployment readiness. 
+👉 [Read the Simulation Note (PDF)](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/blob/main/Test-Verified_Entanglement_Thresholds.pdf)
+
+Quantum utility audit validating the survival of Logarithmic Negativity against IBM Heron native noise.
+👉 [Read the Quantum Utility Audit (PDF)](https://github.com/JavierMartinAlonso1980/qcd-vortex-entanglement/blob/main/Quantum_Utility_Audit_Heron.pdf)
 
 ### Key Features
 
